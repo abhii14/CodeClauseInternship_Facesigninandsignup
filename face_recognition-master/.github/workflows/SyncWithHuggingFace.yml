@@ -1,0 +1,20 @@
+name: Sync With Hugging Face Hub
+
+on:
+  push:
+    branches: [ "master" ]
+  pull_request:
+    branches: [ "master" ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v3
+    - name: Sync With Hugging Face Hub
+      uses: nateraw/huggingface-sync-action@v0.0.5
+      with:
+        github_repo_id: 'MH0386/face_recognition'
+        huggingface_repo_id: 'MH0386/face_recognition'
+        hf_token: ${{ secrets.HF_TOKEN }}
+        subdirectory: 'Model'
